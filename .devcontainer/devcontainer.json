@@ -65,6 +65,7 @@
 
   "onCreateCommand": "bash .devcontainer/onCreate.sh",
   "postCreateCommand": "bash .devcontainer/postCreate.sh",
+  "postStartCommand": "bash .devcontainer/postStart.sh",
   "waitFor": "postCreateCommand",
   "forwardPorts": [4200],
   "portsAttributes": {

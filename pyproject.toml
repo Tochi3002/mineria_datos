@@ -15,21 +15,19 @@ dependencies = [
     "pandas>=2.3.2",
     "matplotlib>=3.10.5",
     "seaborn>=0.13.2",
-
     # Machine learning libraries
     "scikit-learn>=1.6.0",
     "xgboost>=2.1.0",
     "lightgbm>=4.5.0",
     "catboost>=1.2.7",
-
     # Jupyter and notebook support
     "jupyter>=1.1.1",
     "jupyterlab>=4.3.0",
     "ipykernel>=6.29.5",
     "nbclient>=0.10.0",
-
     # Utilities
     "pyyaml>=6.0.2",
+    "optuna>=4.8.0",
 ]
 
 [project.optional-dependencies]

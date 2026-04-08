@@ -58,7 +58,7 @@ K-Means y Jerárquico. Definición de "Personas" y perfiles de clientes. Marketi
 
 - Tareas (15%)
 - Quizes (25%)
-- Examen parcial (30%)
+- Examen parcial: 15 de abril 2026 (30%)
 - Proyecto final (30%):
   - Entrega (75%)
   - Exposición (25%)

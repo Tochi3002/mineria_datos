@@ -274,8 +274,12 @@ Walmart opera más de 10,000 tiendas globalmente y enfrenta el desafío de gesti
 
 **1. Entendimiento del Negocio**
 
-- **Objetivo**: Desarrollar un sistema de pronóstico de ventas semanales por departamento y tienda
-- **Criterio de éxito**: Minimizar el Error Medio Absoluto Ponderado (WMAE), dando mayor peso a semanas festivas
+- **Objetivo**: Desarrollar un sistema de pronóstico de ventas semanales por departamento y tienda.
+- **Criterios de éxito**: 
+   - Minimizar el Error Medio Absoluto Ponderado (WMAE), dando mayor peso a semanas festivas.
+   - Generar una función de ganancias por producto en la que consideremos: 
+      - Si predijimos menos y no había inventario -> ¿Cuánto perdimos de ganancias por no tener inventario suficiente?
+      - Si predijimos que eran más y se vendió menos -> Sumar las ganancias por ventas y restarle los costos de almacenamientos.
 
 **2. Entendimiento de Datos**
 
@@ -284,25 +288,29 @@ Walmart opera más de 10,000 tiendas globalmente y enfrenta el desafío de gesti
 
 **3. Preparación de Datos**
 
-- Tratamiento de valores negativos (devoluciones)
-- Ingeniería de características: variables de retraso (ventas del año anterior)
+- Tratamiento de valores negativos (devoluciones). 
+   - ¿Necesitamos resolver este problema en este caso de negocio?
+- Ingeniería de características.
+   - ¿Cómo predecir la venta de mañana con datos históricos?
 - Transformación de festivos en variables categóricas específicas
 
 **4. Modelado**
 
-- Comparación: Random Forest vs. XGBoost vs. ARIMA
+- ¿Cómo vamos a dividir los datos para evaluación?
+- ¿Qué modelo podemos establecer cómo base? ¿Promedios historicos?
+- Buscar modelos que nos ayuden a resolver este problema.
 
 **5. Evaluación**
 
-- WMAE significativamente reducido vs. promedios históricos
-- Insight: Tamaño de tienda y departamento son predictores principales
-- El precio del combustible tuvo menor impacto del esperado
+- ¿WMAE significativamente reducido vs. promedios históricos?
+- ¿Mejorar ganancias con respecto a promedios históricos?
 
 **6. Despliegue**
 
-- Dashboard analítico en tiempo real 
-- Integración con sistemas de reabastecimiento automático
-- APIs para automatizar órdenes de compra
+Hay dos opciones:
+
+- Si Walmart tiene un encargado del stock de los almacenes crearle una solución que le ayude a planear el inventario. Podría funcionar un dashboard donde pueda visualizar las posibles ventas en un periodo de 1 mes al futuro.
+- Si Walmart tiene todo automatizado, la mejor solución es algo que pueda decirle al sistema cuánto es lo que necesita planear.
 
 #### Impacto de Negocio
 - Optimización de inventario
@@ -314,7 +322,7 @@ Walmart opera más de 10,000 tiendas globalmente y enfrenta el desafío de gesti
 ### Caso de Clasificación: Detección de Fraude en Tarjetas de Crédito
 
 #### Contexto de Negocio
-El fraude financiero representa una amenaza existencial para la confianza bancaria. Solo el 0.17% de transacciones son fraudulentas (extremo desequilibrio de clases).
+El fraude financiero representa una amenaza existencial para la confianza bancaria. Solo el 0.17% de transacciones son fraudulentas.
 
 #### Aplicación de CRISP-DM
 
@@ -322,32 +330,29 @@ El fraude financiero representa una amenaza existencial para la confianza bancar
 
 - **Objetivo**: Identificar transacciones fraudulentas en tiempo real
 - **Costos asimétricos**:
-  - Falso positivo: Frustración del cliente
-  - Falso negativo: Pérdida financiera directa
+  - Falso positivo: Frustración del cliente ¿Se puede cuantificar?
+  - Falso negativo: Pérdida financiera directa ¿Cómo la cuantificamos?
 
 **2. Entendimiento de Datos**
 
 - 284,807 transacciones, 492 fraudulentas (0.17%)
-- Variables V1-V28 (componentes principales anonimizados por privacidad)
-- Variables interpretables: Tiempo, Monto
 
 **3. Preparación de Datos**
 
 - Ingeniería: Extracción de "hora del día" para patrones circadianos
 - Muestreo estratificado para mantener proporción de fraude
-- Técnica SMOTE para balancear clases en entrenamiento
 
 **4. Modelado**
 
-- Comparación: Regresión Logística vs. Random Forest
-- **Resultados**:
-  - Random Forest: Precision 96.52%, Recall 75%, F1-Score 84.41%
-  - Regresión Logística: Precision 84.76%, Recall 60.14%, F1-Score 70.36%
+- Establecer modelo base
+- Buscar modelos que mejoren el desempeño por encima del modelo base.
+- ¿Cómo vamos a dividir los datos para evaluar?
 
 **5. Evaluación**
 
-- Análisis costo-beneficio: $11,500 en pérdidas prevenidas (solo en conjunto de prueba)
+- Análisis costo-beneficio: $11,500 en pérdidas prevenidas
 - 25% de fraudes no detectados = riesgo residual a gestionar
+   - ¿Cuánto riesgo hay en este 25% de fraudes?
 
 **6. Despliegue**
 
@@ -394,11 +399,13 @@ Bank Rakyat Indonesia (BRI) utiliza un Sistema de Gestión de Efectivo (CMS) par
   - Cluster 0 (Masivo): 2,274 empresas - PyMEs con volumen estándar
   - Cluster 1 (Élite): 163 empresas - Corporativos de alto valor
   - Cluster 2 (Intermedio): 220 empresas - En crecimiento
+- ¿Es el único algoritmo?
 
 **5. Evaluación**
 
-- Validación técnica: Índice Davies-Bouldin
-- Validación de negocio: Los clusters permiten acciones concretas diferenciadas
+- Validación técnica: ¿Índice Davies-Bouldin?
+- Validación de negocio: ¿Los clusters permiten acciones concretas diferenciadas?
+   - ¿Cómo evaluarían estas acciones sobre los clusters?
 
 **6. Despliegue**
 
